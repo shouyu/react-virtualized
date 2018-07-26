@@ -1194,7 +1194,10 @@ class Grid extends React.PureComponent<Props, State> {
           ) {
             if (!deferredMeasurementCache.has(rowIndex, 0)) {
               columnStartIndex = 0;
-              columnStopIndex = columnCount - 1;
+              columnStopIndex = Math.max(
+                columnStopIndex,
+                Math.min(columnCount - 1, 100),
+              );
               break;
             }
           }
@@ -1212,7 +1215,10 @@ class Grid extends React.PureComponent<Props, State> {
           ) {
             if (!deferredMeasurementCache.has(0, columnIndex)) {
               rowStartIndex = 0;
-              rowStopIndex = rowCount - 1;
+              rowStopIndex = Math.max(
+                rowStopIndex,
+                Math.min(rowCount - 1, 100),
+              );
               break;
             }
           }
